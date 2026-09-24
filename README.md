@@ -24,6 +24,7 @@ A scalable, extensible backend service for a hotel booking platform, built as pa
 ## Key Design Decisions & Architecture
 
 - **Clean Modularity (SOLID):** The application relies on standard layered architecture (Controllers, Services, Repositories). Domain logic is strictly separated from the transport layer.
+- **Builder Pattern:** Used extensively for clean, readable, and immutable-friendly object instantiation (e.g., `Booking`, `BookingRequest`, `Payment`).
 - **Strategy Pattern (Extensibility):** Core business logic rules are abstracted using the Strategy Pattern to ensure the system is Open for Extension, Closed for Modification:
   - `PaymentStrategy`: Abstracted into `CardPaymentStrategy`, `UpiPaymentStrategy`, and `WalletPaymentStrategy`.
   - `PricingStrategy`: Abstracted into `BasePricingStrategy` and `DynamicPricingStrategy` (prices surge based on proximity to the check-in date).
