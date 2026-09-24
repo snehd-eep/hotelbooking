@@ -44,9 +44,6 @@ A scalable, extensible backend service for a hotel booking platform, built as pa
 
 1. **Production Database & Migrations:** Swap out the in-memory DAO layer with Spring Data JPA, Hibernate, and PostgreSQL. Use Flyway or Liquibase for database schema migrations.
 2. **Database-Level Locking:** Replace the application-level `ReentrantLock` with JPA Pessimistic Write locks or Optimistic Locking (`@Version`) to safely handle horizontal scaling across multiple application nodes.
-3. **OpenAPI / Swagger:** Add SpringDoc OpenAPI to auto-generate interactive API documentation.
-4. **Background Scheduled Tasks:** Add Spring `@Scheduled` tasks to:
+3. **Background Scheduled Tasks:** Add Spring `@Scheduled` tasks to:
    - Roll inventory forward automatically every midnight.
    - Automatically cancel and release `PENDING` bookings if the user fails to make a payment within 15 minutes.
-5. **Input Validation:** Add `spring-boot-starter-validation` and use `@Valid`, `@NotNull`, `@Min` across all Request DTOs, catching errors neatly in the `GlobalExceptionHandler`.
-6. **Pagination & Sorting:** Enhance the `/api/properties/search` endpoint to support Spring `Pageable` for large result sets.
