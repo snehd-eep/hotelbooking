@@ -48,3 +48,4 @@ A scalable, extensible backend service for a hotel booking platform, built as pa
 3. **Background Scheduled Tasks:** Add Spring `@Scheduled` tasks to:
    - Roll inventory forward automatically every midnight.
    - Automatically cancel and release `PENDING` bookings if the user fails to make a payment within 15 minutes.
+4. **Hotel Uniqueness Constraint:** Enforce a database-level unique constraint (e.g., on the combination of property name and location) to prevent the same hotel from being onboarded multiple times.
