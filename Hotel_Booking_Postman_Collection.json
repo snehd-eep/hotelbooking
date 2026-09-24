@@ -1,0 +1,116 @@
+{
+  "info": {
+    "name": "Hotel Booking API",
+    "description": "A complete collection for the Hotel Booking System Machine Coding Round (Updated with auto-IDs and availability).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Add Property",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "url": {"raw": "http://localhost:8080/api/properties", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "properties"]},
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"propertyName\": \"The Grand Hotel\",\n  \"ownerId\": 1,\n  \"city\": \"Bangalore\",\n  \"locality\": \"Central\",\n  \"address\": \"123 MG Road, Bangalore, KA, 560001\",\n  \"amenities\": [\"WIFI\", \"POOL\", \"GYM\"],\n  \"pricingStrategyType\": \"DYNAMIC\",\n  \"cancellationPolicyType\": \"PARTIAL_REFUND\"\n}"
+        }
+      }
+    },
+    {
+      "name": "2. Add Room to Property",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "url": {"raw": "http://localhost:8080/api/properties/1/rooms", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "properties", "1", "rooms"]},
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"roomType\": \"SINGLE\",\n  \"description\": \"Cozy single room with a great view\",\n  \"roomCapacity\": 1,\n  \"price\": 3000\n}"
+        }
+      }
+    },
+    {
+      "name": "3. Search Properties",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/properties/search?city=Bangalore&minPrice=2000&maxPrice=10000",
+          "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "properties", "search"],
+          "query": [
+            {"key": "city", "value": "Bangalore"},
+            {"key": "minPrice", "value": "2000"},
+            {"key": "maxPrice", "value": "10000"}
+          ]
+        }
+      }
+    },
+    {
+      "name": "4. Check Room Availability",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/properties/1/availability?checkIn=2026-10-10&checkOut=2026-10-12",
+          "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "properties", "1", "availability"],
+          "query": [
+            {"key": "checkIn", "value": "2026-10-10"},
+            {"key": "checkOut", "value": "2026-10-12"}
+          ]
+        }
+      }
+    },
+    {
+      "name": "5. Create Booking",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "url": {"raw": "http://localhost:8080/api/bookings", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "bookings"]},
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"propertyId\": 1,\n  \"roomIds\": [1],\n  \"guestName\": \"Raj Kumar\",\n  \"numberOfGuests\": 1,\n  \"checkIn\": \"2026-10-10\",\n  \"checkOut\": \"2026-10-12\",\n  \"paymentMethod\": \"UPI\"\n}"
+        }
+      }
+    },
+    {
+      "name": "6. Payment Callback (Webhook)",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "url": {"raw": "http://localhost:8080/api/payments/callback", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "payments", "callback"]},
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"paymentId\": 1,\n  \"status\": \"SUCCESS\"\n}"
+        }
+      }
+    },
+    {
+      "name": "7. Add Review",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "url": {"raw": "http://localhost:8080/api/reviews", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "reviews"]},
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"propertyId\": 1,\n  \"rating\": 5,\n  \"reviewDescription\": \"Amazing stay, the room was clean and the staff was great!\"\n}"
+        }
+      }
+    },
+    {
+      "name": "8. Cancel Booking",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {"raw": "http://localhost:8080/api/bookings/replace_with_booking_id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "bookings", "replace_with_booking_id"]}
+      }
+    },
+    {
+      "name": "9. Get Booking",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {"raw": "http://localhost:8080/api/bookings/replace_with_booking_id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "bookings", "replace_with_booking_id"]}
+      }
+    }
+  ]
+}
