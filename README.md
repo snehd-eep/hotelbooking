@@ -43,7 +43,7 @@ A scalable, extensible backend service for a hotel booking platform, built as pa
 
 ## What I Would Do With More Time
 
-1. **Production Database & Migrations:** Swap out the in-memory DAO layer with Spring Data JPA, Hibernate, and PostgreSQL. Use Flyway or Liquibase for database schema migrations.
+1. **Production Database & Migrations:** Swap out the in-memory DAO layer with Spring Data JPA, Hibernate, and PostgreSQL.
 2. **Database-Level Locking:** Replace the application-level `ReentrantLock` with JPA Pessimistic Write locks or Optimistic Locking (`@Version`) to safely handle horizontal scaling across multiple application nodes.
 3. **Background Scheduled Tasks:** Add Spring `@Scheduled` tasks to:
    - Roll inventory forward automatically every midnight.
